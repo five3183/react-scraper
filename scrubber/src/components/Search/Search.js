@@ -30,6 +30,8 @@ window.onload = function() {
         let endYear = document.querySelector('#end-year').value
 
         let newsArray = []
+        let headline
+        let link
 
         let key = "api-key=4e6a18908e354053b2e7120e5811b61a&"
         let q = "q=" + topic + "&"
@@ -44,10 +46,11 @@ window.onload = function() {
             .then(data => {
                 console.log("this is data " + data.response.docs[0].web_url)
                 newsArray.push(data.response.docs)  
-                articles = newsArray
-                this.setState({articles})
-                    // for (let x = 0; x < 5; x++){
-                    // }
+                link = newsArray.web_url
+                headline= newsArray.headline.main
+                this.setState( {url: link,
+                    headline: headline}
+                )
             })
     })
 

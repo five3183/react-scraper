@@ -8,37 +8,72 @@ import Search from './components/Search/Search'
 import Results from './components/Results/Results'
 import Saved from './components/Saved/Saved'
 
-let articles = []
+let url
+let headline
 
 class App extends Component {
   state = {
-    articles : {
+    articles: {
       url: url,
       headline: headline
     }
   }
+  render() {
+    return(
+      <div className="container-fluid">
+        <Router>
+          <div>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={Header} />
+              <Route exact path="/Search" render={props => 
+                <div>
+                  <Search />
+                  <br />
+                {this.state.articles.map(art => (
+                  <Results 
+                    url = {art.url}
+                    headline = {art.headline}
+                  />
+                ))}
+                  
+                </div>
+              } />
+              <Route exact path="/Saved" component={Saved} />
+            </Switch>
+          </div>
+        </Router>
+       </div>
+    )
+  }
 }
 
-const App = () => (
-  <div className="container-fluid">
-    <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Header} />
-          <Route exact path="/Search" render={props => 
-            <div>
-              <Search />
-              <br />
-              <Results />
-            </div>
-          } />
-          <Route exact path="/Saved" component={Saved} />
-        </Switch>
-      </div>
-    </Router>
-  </div>
-)
+// const App = () => (
+//   <div className="container-fluid">
+//     <Router>
+//       <div>
+//         <Nav />
+//         <Switch>
+//           <Route exact path="/" component={Header} />
+//           <Route exact path="/Search" render={props => 
+//             <div>
+//               <Search />
+//               <br />
+//             {this.state.articles.map(art => (
+//               <Results 
+//                 url = {this.articles.url}
+//                 headline = {this.articles.headline}
+//               />
+//             ))}
+              
+//             </div>
+//           } />
+//           <Route exact path="/Saved" component={Saved} />
+//         </Switch>
+//       </div>
+//     </Router>
+//   </div>
+// )
 // class App extends Component {
 //   render() {
 //     return (
