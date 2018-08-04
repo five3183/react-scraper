@@ -8,7 +8,7 @@ class Results extends Component {
                 <h2>RESULTS</h2>
                 <hr />
                 <table class="table table-striped">
-                    <tbody>
+                    <tbody id="articles">
                         <tr>
                             <td class="col-md-10">EXAMPLE ARTICLE HERE!</td>
                             <td class="col-md-2"><button type="button" class="btn btn-outline-success">SAVE ME</button></td>
