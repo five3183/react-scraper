@@ -8,6 +8,17 @@ import Search from './components/Search/Search'
 import Results from './components/Results/Results'
 import Saved from './components/Saved/Saved'
 
+let articles = []
+
+class App extends Component {
+  state = {
+    articles : {
+      url: url,
+      headline: headline
+    }
+  }
+}
+
 const App = () => (
   <div className="container-fluid">
     <Router>

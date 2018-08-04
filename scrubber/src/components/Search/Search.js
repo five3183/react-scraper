@@ -43,21 +43,22 @@ window.onload = function() {
             .then(res => res.json())
             .then(data => {
                 console.log("this is data " + data.response.docs[0].web_url)
-                newsArray.push(data.response.docs)
-                    for (let x = 0; x < 5; x++){
-                        let headline = newsArray[0][x].headline.main
-                        let urlDisplay = newsArray[0][x].web_url
-
-                        let news = document.querySelector("#articles")
-                        news.append("<tr>")
-                        news.append("<td className = 'col-md-10'><a href=" + urlDisplay + " " + "target='_blank' />" + headline + "</td>")
-                        news.append("<td className='col-md-2'><button type='button' className='btn btn-outline-success'>SAVE ME</button></td></tr>")
-                    }
+                newsArray.push(data.response.docs)  
+                articles = newsArray
+                this.setState({articles})
+                    // for (let x = 0; x < 5; x++){
+                    // }
             })
-       
-
     })
 
 }
 export default Search
 
+
+// let headline = newsArray[0][x].headline.main
+// let urlDisplay = newsArray[0][x].web_url
+
+// let news = document.querySelector("#articles")
+// news.append("<tr>")
+// news.append("<td className = 'col-md-10'><a href=" + urlDisplay + " " + "target='_blank' />" + headline + "</td>")
+// news.append("<td className='col-md-2'><button type='button' className='btn btn-outline-success'>SAVE ME</button></td></tr>")
